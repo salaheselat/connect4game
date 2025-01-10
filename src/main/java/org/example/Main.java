@@ -13,13 +13,14 @@ public class Main {
         displayBoard(grid);
 
         int selectedColumn;
-        System.out.print("Select Column > ");
-        selectedColumn = stdin.nextInt();
         boolean isPlayerMoveValid;
         do {
             System.out.print("Select Column > ");
             selectedColumn = stdin.nextInt();
             isPlayerMoveValid = isMoveValid(selectedColumn, grid);
+            if (!isPlayerMoveValid) {
+                System.out.println("Please Choose a column between 0-6.");
+            }
         } while (!isPlayerMoveValid);
 
         for (int row = grid.length - 1; row >= 0; row--) {
