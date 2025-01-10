@@ -21,6 +21,15 @@ public class Main {
             selectedColumn = stdin.nextInt();
             isPlayerMoveValid = isMoveValid(selectedColumn, grid);
         } while (!isPlayerMoveValid);
+
+        for (int row = grid.length - 1; row >= 0; row--) {
+            if (grid[row][selectedColumn] == ' ') {
+                grid[row][selectedColumn] = 'S';
+                break;
+            }
+        }
+        displayBoard(grid);
+
     }
 
         public static void displayBoard ( char[][] grid){
