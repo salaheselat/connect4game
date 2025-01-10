@@ -14,7 +14,7 @@ public class Main {
     }
 
         public static void displayBoard ( char[][] grid){
-            System.out.print(" ");
+            System.out.print("");
             for (int col = 0; col < grid[0].length; col++) {
                 System.out.print(col + " ");
             }
@@ -29,7 +29,7 @@ public class Main {
                 }
                 System.out.println();
             }
-            System.out.print(" ");
+            System.out.print("");
             for (int col = 0; col < grid[0].length; col++) {
                 System.out.print(col + " ");
             }
