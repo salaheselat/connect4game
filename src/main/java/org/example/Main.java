@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.Scanner;
 
 public class Main {
@@ -12,6 +11,10 @@ public class Main {
             }
         }
         displayBoard(grid);
+
+        int selectedColumn;
+        System.out.print("Select Column > ");
+        selectedColumn = stdin.nextInt();
     }
 
         public static void displayBoard ( char[][] grid){
