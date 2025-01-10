@@ -3,7 +3,7 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        char[][] grid = new char[5][5];
+        char[][] grid = new char[6][7];
 
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[0].length; col++) {
@@ -14,6 +14,10 @@ public class Main {
     }
 
         public static void displayBoard ( char[][] grid){
+            System.out.print(" ");
+            for (int col = 0; col < grid[0].length; col++) {
+                System.out.print(col + " ");
+            }
             System.out.println();
             for (int row = 0; row < grid.length; row++) {
                 for (int col = 0; col < grid[0].length; col++) {
