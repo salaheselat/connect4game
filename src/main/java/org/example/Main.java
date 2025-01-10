@@ -15,6 +15,12 @@ public class Main {
         int selectedColumn;
         System.out.print("Select Column > ");
         selectedColumn = stdin.nextInt();
+        boolean isPlayerMoveValid;
+        do {
+            System.out.print("Select Column > ");
+            selectedColumn = stdin.nextInt();
+            isPlayerMoveValid = isMoveValid(selectedColumn, grid);
+        } while (!isPlayerMoveValid);
     }
 
         public static void displayBoard ( char[][] grid){
