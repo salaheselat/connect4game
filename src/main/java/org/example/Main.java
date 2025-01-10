@@ -1,10 +1,11 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-
+        Scanner stdin = new Scanner(System.in);
         char[][] grid = new char[6][7];
-
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[0].length; col++) {
                 grid[row][col] = ' ';
