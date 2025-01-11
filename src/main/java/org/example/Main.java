@@ -25,7 +25,7 @@ public class Main {
                 } else {
                     playersNumber = "2";
                 }
-                System.out.print("Player " + playersNumber + player + ", Select Column > ");
+                System.out.print("Player " + playersNumber+ " " + player + " Select Column > ");
                 selectedColumn = stdin.nextInt();
                 isPlayerMoveValid = isMoveValid(selectedColumn, grid);
                 if (!isPlayerMoveValid) {
