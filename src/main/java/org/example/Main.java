@@ -12,6 +12,9 @@ public class Main {
         }
         displayBoard(grid);
 
+        char player = 'X';
+        int turn = 0;
+
         int selectedColumn;
         boolean isPlayerMoveValid;
         do {
@@ -30,7 +33,6 @@ public class Main {
             }
         }
         displayBoard(grid);
-
     }
 
         public static void displayBoard ( char[][] grid){
