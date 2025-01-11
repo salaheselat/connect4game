@@ -83,9 +83,11 @@ public class Main {
     }
 
     public static boolean determineWinner(char player, char[][] grid) {
-
+        // horizontal win
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[0].length - 3; col++) {
+            }
+        }
         return false;
     }
-
 }
-
