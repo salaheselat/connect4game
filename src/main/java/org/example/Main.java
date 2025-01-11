@@ -26,7 +26,7 @@ public class Main {
                 } else {
                     playersNumber = "2";
                 }
-                System.out.print("Player " + playersNumber+ " " + player + " Select Column > ");
+                System.out.print("Player " + playersNumber + " " + player + " Select Column > ");
                 selectedColumn = stdin.nextInt();
                 isPlayerMoveValid = isMoveValid(selectedColumn, grid);
                 if (!isPlayerMoveValid) {
@@ -41,6 +41,7 @@ public class Main {
                 }
             }
             displayBoard(grid);
+            winner = determineWinner(player, grid);
 
             if (player == 'X') {
                 player = 'O';
@@ -49,7 +50,21 @@ public class Main {
             }
             turn++;
         }
-        System.out.println("Board is full game draw!");
+
+        if (winner) {
+            String playerNumber;
+            char winningPlayer;
+            if (player == 'O') {
+                playerNumber = "1";
+                winningPlayer = 'X';
+            } else {
+                playerNumber = "2";
+                winningPlayer = 'O';
+            }
+            System.out.println("Player" + playerNumber +  winningPlayer + "is the winner!");
+        } else {
+            System.out.println("Board is full game draw!");
+        }
     }
 
         public static void displayBoard ( char[][] grid){
