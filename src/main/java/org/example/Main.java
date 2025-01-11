@@ -13,7 +13,7 @@ public class Main {
         displayBoard(grid);
 
         char player = 'X';
-        int turn = 0;
+        int turn = 1;
 
         while (turn <= 42) {
             int selectedColumn;
@@ -48,6 +48,7 @@ public class Main {
             }
             turn++;
         }
+        System.out.println("Board is full game draw!");
     }
 
         public static void displayBoard ( char[][] grid){
