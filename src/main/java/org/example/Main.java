@@ -14,8 +14,9 @@ public class Main {
 
         char player = 'X';
         int turn = 1;
+        boolean winner = false;
 
-        while (turn <= 42) {
+        while (!winner && turn <= 42) {
             int selectedColumn;
             boolean isPlayerMoveValid;
             do {
@@ -80,5 +81,11 @@ public class Main {
         }
         return true;
     }
+
+    public static boolean determineWinner(char player, char[][] grid) {
+
+        return false;
+    }
+
 }
 
