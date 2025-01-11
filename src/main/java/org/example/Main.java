@@ -35,11 +35,18 @@ public class Main {
 
             for (int row = grid.length - 1; row >= 0; row--) {
                 if (grid[row][selectedColumn] == ' ') {
-                    grid[row][selectedColumn] = 'S';
+                    grid[row][selectedColumn] = player;
                     break;
                 }
             }
             displayBoard(grid);
+
+            if (player == 'X') {
+                player = 'O';
+            } else {
+                player = 'X';
+            }
+            turn++;
         }
     }
 
