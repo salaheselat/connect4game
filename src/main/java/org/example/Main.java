@@ -15,24 +15,32 @@ public class Main {
         char player = 'X';
         int turn = 0;
 
-        int selectedColumn;
-        boolean isPlayerMoveValid;
-        do {
-            System.out.print("Select Column > ");
-            selectedColumn = stdin.nextInt();
-            isPlayerMoveValid = isMoveValid(selectedColumn, grid);
-            if (!isPlayerMoveValid) {
-                System.out.println("Please Choose a column between 0-6.");
-            }
-        } while (!isPlayerMoveValid);
+        while (turn <= 42) {
+            int selectedColumn;
+            boolean isPlayerMoveValid;
+            do {
+                String playersNumber;
+                if (player == 'X') {
+                    playersNumber = "1";
+                } else {
+                    playersNumber = "2";
+                }
+                System.out.print("Player " + playersNumber + player + ", Select Column > ");
+                selectedColumn = stdin.nextInt();
+                isPlayerMoveValid = isMoveValid(selectedColumn, grid);
+                if (!isPlayerMoveValid) {
+                    System.out.println("Please Choose a column between 0-6.");
+                }
+            } while (!isPlayerMoveValid);
 
-        for (int row = grid.length - 1; row >= 0; row--) {
-            if (grid[row][selectedColumn] == ' ') {
-                grid[row][selectedColumn] = 'S';
-                break;
+            for (int row = grid.length - 1; row >= 0; row--) {
+                if (grid[row][selectedColumn] == ' ') {
+                    grid[row][selectedColumn] = 'S';
+                    break;
+                }
             }
+            displayBoard(grid);
         }
-        displayBoard(grid);
     }
 
         public static void displayBoard ( char[][] grid){
