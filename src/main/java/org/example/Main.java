@@ -86,6 +86,12 @@ public class Main {
         // horizontal win
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[0].length - 3; col++) {
+                if (grid[row][col] == player &&
+                        grid[row][col + 1] == player &&
+                        grid[row][col + 2] == player &&
+                        grid[row][col + 3] == player) {
+                    return true;
+                }
             }
         }
         return false;
