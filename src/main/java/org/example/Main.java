@@ -17,11 +17,14 @@ public class Main {
         boolean winner = false;
         boolean blitzX = false;
         boolean blitzO = false;
+        boolean timeBombX = false;
+        boolean timeBombO = false;
 
         while (!winner && turn <= 42) {
             int selectedColumn = -1;
             boolean isPlayerMoveValid = false;
             boolean isPlayerBlitz = false;
+            boolean isPlayerTimeBomb = false;
 
             do {
                 String playersNumber;
@@ -195,4 +198,9 @@ public class Main {
         }
             return true;
         }
+
+    public static boolean applyTimeBomb(Scanner stdin, char[][] grid) {
+
+        return false;
     }
+}
