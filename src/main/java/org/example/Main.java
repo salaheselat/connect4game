@@ -120,6 +120,16 @@ public class Main {
                 }
             }
         }
+        for (int row = 0; row < grid.length - 3; row++) {
+            for (int col = 0; col < grid[0].length - 3; col++) {
+                if (grid[row][col] == player &&
+                        grid[row + 1][col + 1] == player &&
+                        grid[row + 2][col + 2] == player &&
+                        grid[row + 3][col + 3] == player) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 }
