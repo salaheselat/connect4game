@@ -59,7 +59,7 @@ public class Main {
                     }
                 }
 
-            } while (!isPlayerMoveValid && isPlayerBlitz);
+            } while (!isPlayerMoveValid && !isPlayerBlitz);
 
             if (!isPlayerBlitz) {
                 for (int row = grid.length - 1; row >= 0; row--) {
