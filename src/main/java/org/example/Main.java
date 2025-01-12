@@ -120,6 +120,9 @@ public class Main {
                 }
             }
         }
+        for (int row = 0; row < grid.length - 3; row++) {
+            for (int col = 0; col < grid[0].length - 3; col++);
+        }
         return false;
     }
 }
