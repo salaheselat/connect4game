@@ -156,12 +156,15 @@ public class Main {
                     for (int row = 0; row < grid.length; row++) {
                         grid[row][column] = ' ';
                     }
+                    displayBoard(grid);
+                    blitzUsed = true;
+                } else {
+                    System.out.println("Please Choose a column between 0-6.");
                 }
-                return false;
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            } catch (NumberFormatException e) {
+                System.out.println("Choose column 0-6.");
             }
         }
-        return blitzUsed;
+            return false;
+        }
     }
-}
