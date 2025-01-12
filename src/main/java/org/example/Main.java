@@ -15,6 +15,8 @@ public class Main {
         char player = 'X';
         int turn = 1;
         boolean winner = false;
+        boolean blitzX = false;
+        boolean blitzO = false;
 
         while (!winner && turn <= 42) {
             int selectedColumn;
@@ -61,36 +63,36 @@ public class Main {
                 playerNumber = "2";
                 winningPlayer = 'O';
             }
-            System.out.println("Player" + playerNumber +  winningPlayer + "is the winner!");
+            System.out.println("Player" + " " + playerNumber + " " + winningPlayer + " is the winner!");
         } else {
             System.out.println("Board is full game draw!");
         }
     }
 
-        public static void displayBoard ( char[][] grid){
-            System.out.print("");
+    public static void displayBoard(char[][] grid) {
+        System.out.print("");
+        for (int col = 0; col < grid[0].length; col++) {
+            System.out.print(col + " ");
+        }
+        System.out.println();
+        for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[0].length; col++) {
-                System.out.print(col + " ");
-            }
-            System.out.println();
-            for (int row = 0; row < grid.length; row++) {
-                for (int col = 0; col < grid[0].length; col++) {
-                    if (grid[row][col] == ' ') {
-                        System.out.print("- ");
-                    } else {
-                        System.out.print(grid[row][col] + " ");
-                    }
+                if (grid[row][col] == ' ') {
+                    System.out.print("- ");
+                } else {
+                    System.out.print(grid[row][col] + " ");
                 }
-                System.out.println();
-            }
-            System.out.print("");
-            for (int col = 0; col < grid[0].length; col++) {
-                System.out.print(col + " ");
             }
             System.out.println();
         }
+        System.out.print("");
+        for (int col = 0; col < grid[0].length; col++) {
+            System.out.print(col + " ");
+        }
+        System.out.println();
+    }
 
-        public static boolean isMoveValid(int column, char[][] grid) {
+    public static boolean isMoveValid(int column, char[][] grid) {
         if (column < 0 || column >= grid[0].length || grid[0][column] != ' ') {
             return false;
         }
@@ -141,6 +143,11 @@ public class Main {
                 }
             }
         }
+        return false;
+    }
+
+    public static boolean applyBlitz(Scanner stdin, char[][] grid) {
+
         return false;
     }
 }
