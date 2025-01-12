@@ -147,7 +147,21 @@ public class Main {
     }
 
     public static boolean applyBlitz(Scanner stdin, char[][] grid) {
-
-        return false;
+        boolean blitzUsed = false;
+        while (!blitzUsed) {
+            System.out.print("Blitz please select column > ");
+            try {
+                int column = Integer.parseInt(stdin.nextLine());
+                if (column >= 0 && column < grid[0].length) {
+                    for (int row = 0; row < grid.length; row++) {
+                        grid[row][column] = ' ';
+                    }
+                }
+                return false;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return blitzUsed;
     }
 }
