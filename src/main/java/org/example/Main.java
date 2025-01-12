@@ -19,8 +19,10 @@ public class Main {
         boolean blitzO = false;
 
         while (!winner && turn <= 42) {
-            int selectedColumn;
-            boolean isPlayerMoveValid;
+            int selectedColumn = -1;
+            boolean isPlayerMoveValid = false;
+            boolean isPlayerBlitz = false;
+
             do {
                 String playersNumber;
                 if (player == 'X') {
@@ -28,20 +30,46 @@ public class Main {
                 } else {
                     playersNumber = "2";
                 }
-                System.out.print("Player " + playersNumber + " " + player + " Select Column > ");
-                selectedColumn = stdin.nextInt();
-                isPlayerMoveValid = isMoveValid(selectedColumn, grid);
-                if (!isPlayerMoveValid) {
-                    System.out.println("Please Choose a column between 0-6.");
-                }
-            } while (!isPlayerMoveValid);
 
-            for (int row = grid.length - 1; row >= 0; row--) {
-                if (grid[row][selectedColumn] == ' ') {
-                    grid[row][selectedColumn] = player;
-                    break;
+                System.out.print("Player " + playersNumber + " " + player + " Select Column > ");
+                String playerInput = stdin.nextLine();
+                if (playerInput.equals("B") || playerInput.equals("b")) {
+                    if ((player == 'X' && blitzX) || (player == 'O' && blitzO)) {
+                        System.out.println("Blitz used!.");
+                    } else {
+                        isPlayerBlitz = applyBlitz(stdin, grid);
+                        if (isPlayerBlitz) {
+                            if (player == 'X') {
+                                blitzX = true;
+                            } else {
+                                blitzO = true;
+                            }
+                        }
+                        break;
+                    }
+                }else {
+                    try {
+                        selectedColumn = Integer.parseInt(playerInput);
+                        isPlayerMoveValid = isMoveValid(selectedColumn, grid);
+                        if (!isPlayerMoveValid) {
+                            System.out.println("Please Choose a column between 0-6.");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Choose Column 0-6.");
+                    }
+                }
+
+            } while (!isPlayerMoveValid && !isPlayerBlitz);
+
+            if (!isPlayerBlitz) {
+                for (int row = grid.length - 1; row >= 0; row--) {
+                    if (grid[row][selectedColumn] == ' ') {
+                        grid[row][selectedColumn] = player;
+                        break;
+                    }
                 }
             }
+
             displayBoard(grid);
             winner = determineWinner(player, grid);
 
@@ -165,6 +193,6 @@ public class Main {
                 System.out.println("Choose column 0-6.");
             }
         }
-            return false;
+            return true;
         }
     }
