@@ -97,5 +97,10 @@ void testDetermineWinnerVertical() {
         assertFalse(Main.determineWinner('O', grid));
     }
 
+    @Test
+    void testApplyTimeBomb(){
+
+    }
+
 
 }
