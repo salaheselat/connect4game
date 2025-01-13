@@ -200,7 +200,30 @@ public class Main {
         }
 
     public static boolean applyTimeBomb(Scanner stdin, char[][] grid) {
-
+        boolean validTimeBomb = false;
+        while (!validTimeBomb) {
+            System.out.print("Time Bomb please select column > ");
+            try {
+                int column = Integer.parseInt(stdin.nextLine());
+                if (column >= 0 && column < grid[0].length) {
+                    for (int row = grid.length - 1; row >= 0; row--) {
+                        if (grid[row][column] == ' ') {
+                            grid[row][column] = '*';
+                            displayBoard(grid);
+                            validTimeBomb = true;
+                            break;
+                        }
+                    }
+                    if (!validTimeBomb) {
+                        System.out.println("Choose an empty space.");
+                    }
+                } else {
+                    System.out.println("Please Choose a column between 0-6.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Choose column 0-6.");
+            }
+        }
         return false;
     }
 }
