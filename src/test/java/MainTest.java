@@ -36,12 +36,28 @@ public class MainTest {
             grid[row][0] = 'X';
         }
         Main.applyBlitz(new java.util.Scanner("0\n"), grid);
-
         // check if blitz is applied to column
         for (int row = 0; row < grid.length; row++) {
             assertEquals(' ', grid[row][0]);
         }
     }
+@Test
+void testDetermineWinnerHorizontal() {
+    char[][] grid = new char[6][7];
+    // init grid
+    for (int row = 0; row < grid.length; row++) {
+        for (int col = 0; col < grid[0].length; col++) {
+            grid[row][col] = ' ';
+        }
+    }
+    // horizontal win player x
+    grid[0][0] = 'X';
+    grid[0][1] = 'X';
+    grid[0][2] = 'X';
+    grid[0][3] = 'X';
+    assertTrue(Main.determineWinner('X', grid));
+    assertFalse(Main.determineWinner('O', grid));
+}
 
 
 }
