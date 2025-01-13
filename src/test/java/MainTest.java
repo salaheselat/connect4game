@@ -41,6 +41,7 @@ public class MainTest {
             assertEquals(' ', grid[row][0]);
         }
     }
+    // test horizontal win
 @Test
 void testDetermineWinnerHorizontal() {
     char[][] grid = new char[6][7];
@@ -57,6 +58,24 @@ void testDetermineWinnerHorizontal() {
     grid[0][3] = 'X';
     assertTrue(Main.determineWinner('X', grid));
     assertFalse(Main.determineWinner('O', grid));
+}
+// test vertical win
+@Test
+void testDetermineWinnerVertical() {
+    char[][] grid = new char[6][7];
+    // init grid
+    for (int row = 0; row < grid.length; row++) {
+        for (int col = 0; col < grid[0].length; col++) {
+            grid[row][col] = ' ';
+        }
+    }
+    //vertical win player o
+    grid[0][0] = 'O';
+    grid[1][0] = 'O';
+    grid[2][0] = 'O';
+    grid[3][0] = 'O';
+    assertTrue(Main.determineWinner('O', grid));
+    assertFalse(Main.determineWinner('X', grid));
 }
 
 
