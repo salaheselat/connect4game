@@ -25,7 +25,7 @@ public class Main {
             boolean isPlayerMoveValid = false;
             boolean isPlayerBlitz = false;
             boolean isPlayerTimeBomb = false;
-
+            //player number
             do {
                 String playersNumber;
                 if (player == 'X') {
@@ -33,7 +33,7 @@ public class Main {
                 } else {
                     playersNumber = "2";
                 }
-
+                // Handle moves like blitz and time bomb
                 System.out.print("Player " + playersNumber + " " + player + " Select Column > ");
                 String playerInput = stdin.nextLine();
                 if (playerInput.equals("B") || playerInput.equals("b")) {
@@ -65,6 +65,7 @@ public class Main {
                         break;
                     }
                 }else {
+                    // handle choosing game columns
                     try {
                         selectedColumn = Integer.parseInt(playerInput);
                         isPlayerMoveValid = isMoveValid(selectedColumn, grid);
@@ -77,7 +78,7 @@ public class Main {
                 }
 
             } while (!isPlayerMoveValid && !isPlayerBlitz && !isPlayerTimeBomb);
-
+            //drop into columns
             if (!isPlayerBlitz && !isPlayerTimeBomb) {
                 for (int row = grid.length - 1; row >= 0; row--) {
                     if (grid[row][selectedColumn] == ' ') {
@@ -86,10 +87,10 @@ public class Main {
                     }
                 }
             }
-
+            // display the board after dropping to columns
             displayBoard(grid);
-            winner = determineWinner(player, grid);
-
+            winner = determineWinner(player, grid); // check for possible winner
+            // handle turn
             if (player == 'X') {
                 player = 'O';
             } else {
@@ -97,7 +98,7 @@ public class Main {
             }
             turn++;
         }
-
+        // display the results of the winner or draw if full
         if (winner) {
             String playerNumber;
             char winningPlayer;
@@ -113,12 +114,14 @@ public class Main {
             System.out.println("Board is full game draw!");
         }
     }
-
+    // board function
     public static void displayBoard(char[][] grid) {
+        // add columns number on top
         System.out.print("");
         for (int col = 0; col < grid[0].length; col++) {
             System.out.print(col + " ");
         }
+        // show the grid
         System.out.println();
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[0].length; col++) {
@@ -130,22 +133,23 @@ public class Main {
             }
             System.out.println();
         }
+        // add column numbers to bottom to make it easier to read
         System.out.print("");
         for (int col = 0; col < grid[0].length; col++) {
             System.out.print(col + " ");
         }
         System.out.println();
     }
-
+    // function checks if move within bound and  space is available in columns
     public static boolean isMoveValid(int column, char[][] grid) {
         if (column < 0 || column >= grid[0].length || grid[0][column] != ' ') {
             return false;
         }
         return true;
     }
-
+    // find winner
     public static boolean determineWinner(char player, char[][] grid) {
-        // horizontal win
+        // check horizontal win
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[0].length - 3; col++) {
                 if (grid[row][col] == player &&
@@ -156,7 +160,7 @@ public class Main {
                 }
             }
         }
-        // vertical
+        // check vertical win
         for (int row = 0; row < grid.length - 3; row++) {
             for (int col = 0; col < grid[0].length; col++) {
                 if (grid[row][col] == player &&
@@ -167,7 +171,7 @@ public class Main {
                 }
             }
         }
-        // diagonal
+        // check diagonal win top left to right
         for (int row = 0; row < grid.length - 3; row++) {
             for (int col = 0; col < grid[0].length - 3; col++) {
                 if (grid[row][col] == player &&
@@ -178,6 +182,7 @@ public class Main {
                 }
             }
         }
+        // check diagonal bottom left to right
         for (int row = 3; row < grid.length; row++) {
             for (int col = 0; col < grid[0].length - 3; col++) {
                 if (grid[row][col] == player &&
@@ -190,7 +195,7 @@ public class Main {
         }
         return false;
     }
-
+    // blitz function to clear column
     public static boolean applyBlitz(Scanner stdin, char[][] grid) {
         boolean blitzUsed = false;
         while (!blitzUsed) {
@@ -212,7 +217,7 @@ public class Main {
         }
             return true;
         }
-
+    // time bomb function to drop bomb into column
     public static boolean applyTimeBomb(Scanner stdin, char[][] grid) {
         boolean validTimeBomb = false;
         while (!validTimeBomb) {
