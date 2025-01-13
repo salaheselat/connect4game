@@ -140,7 +140,7 @@ public class Main {
         }
         System.out.println();
     }
-    // function checks if move within bound and  space is available in columns
+    // function checks if move within bound and space is available in columns
     public static boolean isMoveValid(int column, char[][] grid) {
         if (column < 0 || column >= grid[0].length || grid[0][column] != ' ') {
             return false;

@@ -78,8 +78,6 @@ void testDetermineWinnerVertical() {
     assertFalse(Main.determineWinner('X', grid));
 }
 
-
-
 // test diagonal win
     @Test
     void testDetermineWinnerDiagonal(){
