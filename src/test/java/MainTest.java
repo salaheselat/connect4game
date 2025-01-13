@@ -79,4 +79,25 @@ void testDetermineWinnerVertical() {
 }
 
 
+
+// test diagonal win
+    @Test
+    void testDetermineWinnerDiagonal(){
+        char[][] grid = new char[6][7];
+        // init grid
+        for (int row = 0; row < grid.length; row++){
+            for (int col = 0; col< grid.length; col++){
+                grid[row][col] = ' ';
+            }
+        }
+        // diagonal win player x
+        grid[0][0] = 'X';
+        grid[1][1] = 'X';
+        grid[2][2] = 'X';
+        grid[3][3] = 'X';
+        assertTrue(Main.determineWinner('X', grid));
+        assertFalse(Main.determineWinner('O', grid));
+    }
+
+
 }
