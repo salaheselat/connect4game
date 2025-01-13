@@ -50,6 +50,20 @@ public class Main {
                         }
                         break;
                     }
+                } else if (playerInput.equals("T") || playerInput.equals("t")) {
+                    if ((player == 'X' && timeBombX) || (player == 'O' && timeBombO)) {
+                        System.out.println("Time Bomb used!.");
+                    } else {
+                        isPlayerTimeBomb = applyTimeBomb(stdin, grid);
+                        if (isPlayerTimeBomb) {
+                            if (player == 'X') {
+                                timeBombX = true;
+                            } else {
+                                timeBombO = true;
+                            }
+                        }
+                        break;
+                    }
                 }else {
                     try {
                         selectedColumn = Integer.parseInt(playerInput);
@@ -62,9 +76,9 @@ public class Main {
                     }
                 }
 
-            } while (!isPlayerMoveValid && !isPlayerBlitz);
+            } while (!isPlayerMoveValid && !isPlayerBlitz && !isPlayerTimeBomb);
 
-            if (!isPlayerBlitz) {
+            if (!isPlayerBlitz && !isPlayerTimeBomb) {
                 for (int row = grid.length - 1; row >= 0; row--) {
                     if (grid[row][selectedColumn] == ' ') {
                         grid[row][selectedColumn] = player;
@@ -224,6 +238,6 @@ public class Main {
                 System.out.println("Choose column 0-6.");
             }
         }
-        return false;
+        return true;
     }
 }
