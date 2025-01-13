@@ -230,6 +230,24 @@ public class Main {
                             grid[row][column] = '*';
                             displayBoard(grid);
                             validTimeBomb = true;
+
+                            // Trigger explosion
+                            for (int bomb = 0; bomb < grid.length; bomb++) {
+                                if (grid[bomb][column] == '*') {
+                                    // explode columns
+                                    for (int surRow = -1; surRow <= 1; surRow++) {
+                                        for (int surCol = -1; surCol <= 1; surCol++) {
+                                            int bombRow = bomb + surRow;
+                                            int bombCol = column + surCol;
+                                            if (bombRow >= 0 && bombRow < grid.length && bombCol >= 0 && bombCol < grid[0].length) {
+                                                grid[bombRow][bombCol] = ' ';
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                            displayBoard(grid); //display after bomb explodes
                             break;
                         }
                     }
