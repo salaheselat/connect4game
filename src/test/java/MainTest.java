@@ -1,7 +1,7 @@
 import org.example.Main;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MainTest {
     // test is move valid function
@@ -28,5 +28,20 @@ public class MainTest {
         }
         assertFalse(Main.isMoveValid(0, grid));
     }
+    // test blitz function
+    @Test
+    void testApplyBlitz() {
+        char[][] grid = new char[6][7];
+        for (int row = 0; row < grid.length; row++) {
+            grid[row][0] = 'X';
+        }
+        Main.applyBlitz(new java.util.Scanner("0\n"), grid);
+
+        // check if blitz is applied to column
+        for (int row = 0; row < grid.length; row++) {
+            assertEquals(' ', grid[row][0]);
+        }
+    }
+
 
 }
