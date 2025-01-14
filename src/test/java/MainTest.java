@@ -99,7 +99,13 @@ void testDetermineWinnerVertical() {
 
     @Test
     void testApplyTimeBomb(){
-
+        char[][] grid = new char[6][7];
+        // init grid
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[0].length; col++) {
+                grid[row][col] = ' ';
+            }
+        }
     }
 
 
